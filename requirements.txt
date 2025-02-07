@@ -1,0 +1,4 @@
+Flask
+gspread
+oauth2client
+gunicorn
