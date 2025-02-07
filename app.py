@@ -1,23 +1,26 @@
+import json
+import os
 from flask import Flask, render_template, request, redirect
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import hashlib
-import time
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Initialize gspread credentials
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
-client = gspread.authorize(creds)
+# Load credentials from environment variable instead of file
+creds_json = os.getenv("GOOGLE_CREDENTIALS")
+if creds_json:
+    creds_dict = json.loads(creds_json)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'])
+    client = gspread.authorize(creds)
+else:
+    raise Exception("GOOGLE_CREDENTIALS not set in Render environment variables.")
 
 # Open the Google Sheets workbook
 workbook = client.open('xarkids')
-
-# Get Sheet1 and Sheet2
 sheet1 = workbook.worksheet("Sheet1")
 sheet2 = workbook.worksheet("Sheet2")
+
+
 
 #database for account details
 account_details = {
@@ -51,6 +54,8 @@ sender_pin_codes = {
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -207,4 +212,4 @@ def price():
                            price_per_coin=price_per_coin)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
