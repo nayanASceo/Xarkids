@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Successful</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='logo.png') }}'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container styles */
+        .container {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #4CAF50;
+            font-size: 28px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .container p {
+            color: #000;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            font-size: 18px;
+        }
+
+        /* Transaction details */
+        .transaction-details {
+            margin-top: 20px;
+            text-align: left;
+            color: #000; /* Changed to black for visibility */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .transaction-details p {
+            margin: 8px 0;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #ff6347; /* Updated button color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff4500;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction Successful</h1>
+        <p>Your transaction has been processed successfully.</p>
+        <div class="transaction-details">
+            <p><strong>Sender Account:</strong> {{ sender_account }}</p>
+            <p><strong>Receiver Account:</strong> {{ receiver_account }}</p>
+            <p><strong>Amount:</strong> {{ amount }} XARCOIN</p>
+            <p><strong>Transaction Fee:</strong> {{ transaction_fee }} XARCOIN</p>
+            <p><strong>Timestamp:</strong> {{ timestamp }}</p> <!-- Added Timestamp -->
+        </div>
+        <a href="/home" class="btn">Back to Home</a> <!-- Added a button to navigate back -->
+    </div>
+</body>
+</html>

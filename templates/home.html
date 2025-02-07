@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your Banking App</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', cursive;
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='hero.jpg') }}'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black header */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Logo styles */
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        /* Navigation styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347; /* Change hover color */
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .container h2, .container p {
+            color: #f8f9fa;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #ff6347; /* Updated button color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            width: 250px;
+        }
+
+        .btn:hover {
+            background-color: #ff4500;
+            transform: translateY(-5px);
+        }
+
+        /* Adding icons/pictures for Transfer and Price Information */
+        .btn img {
+            width: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Xarkids</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="/index">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container" id="features">
+        <h2>Welcome, Account Number: {{ account_number }}</h2>
+        <p>Your Balance: Xř {{ balance }}</p>
+
+        <!-- Transfer Money Button with Icon -->
+        <!-- Transfer Money Button with Icon -->
+<a href="/transfer" class="btn">
+    <img src="{{ url_for('static', filename='transfer.png') }}" alt="transfer">
+    <span>Transfer Money</span>
+</a>
+
+<!-- Price Information Button with Icon -->
+<a href="/price" class="btn">
+    <img src="{{ url_for('static', filename='price.jpg') }}" alt="price">
+    <span>Price Information</span>
+</a>
+    </div>
+</body>
+</html>

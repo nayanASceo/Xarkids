@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Page</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='hero2.jpg') }}'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black header */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Logo styles */
+        .logo {
+            display: flex; /* Added display flex to center items */
+            align-items: center; /* Center vertically */
+        }
+
+        .logo img {
+            width: 60px; /* Adjusted width for better size */
+            height: 60px; /* Adjusted height for better size */
+            border-radius: 50%; /* Circular logo */
+            object-fit: cover; /* Changed from blank to cover to maintain aspect ratio */
+            margin-right: 10px; /* Added margin for spacing between logo and text */
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347; /* Change hover color */
+        }
+
+        /* Hero section */
+        .hero {
+            margin-top: 80px; /* Spacing below header */
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: #f8f9fa;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #f8f9fa;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 150px auto 100px; /* Increased top margin to avoid overlap with fixed header */
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #f8f9fa;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff4500;
+            transform: translateY(-5px);
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with logo and navigation -->
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Logo"> <!-- Added logo container -->
+            <span>Logo</span> <!-- Moved logo text into a span for better alignment -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero section with main content -->
+    <section class="hero">
+        <h1>Welcome to the Transaction Page</h1>
+        <p>Transfer your funds securely</p>
+    </section>
+
+    <!-- Transaction form -->
+    <div class="container">
+        <h2>Transfer Funds</h2>
+        <form action="/transfer" method="POST">
+            <label for="sender_acc">Sender Account Number:</label>
+            <input type="text" id="sender_acc" name="sender_acc" required>
+
+            <label for="sender_pin">Sender PIN:</label>
+            <input type="password" id="sender_pin" name="sender_pin" required>
+
+            <label for="receiver_acc">Receiver Account Number:</label>
+            <input type="text" id="receiver_acc" name="receiver_acc" required>
+
+            <label for="amount">Amount to Transfer:</label>
+            <input type="number" id="amount" name="amount" required min="0" step="0.01">
+
+            <button type="submit" class="btn">Transfer Funds</button>
+        </form>
+        
+    </div>
+</body>
+</html>

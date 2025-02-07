@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Crypto Platform of Bhutan</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Fantasy, sans-serif;
+            background-image: url('{{ url_for('static', filename='hero.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent header */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%; /* Circular logo */
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 54px;
+            margin-left: 15px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: rgba(0, 0, 0, 0.1); /* Transparent dark overlay */
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
+        .btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            font-size: 18px;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: background-color 2s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .image-gallery img {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px; /* Rounded corners */
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker footer background */
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Logo -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Crypto Platform Logo">
+            <h1 class="logo-text">Xarkids</h1>
+        </div>
+        <nav>
+            <a href="/login" class="btn">Learn More</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Welcome to Bhutan's Digital Revolution</h1>
+        <p>Join us in transforming Bhutan's economy through cryptocurrency. Explore XARCOIN today!</p>
+        <a href="/login" class="btn">Get Started</a>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="image-gallery">
+        <img src="{{ url_for('static', filename='1.jpg') }}" alt="Logo">
+        <img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo">
+        <img src="{{ url_for('static', filename='3.jpg') }}" alt="Logo">
+    </section>
+
+</body>
+</html>
