@@ -147,7 +147,13 @@
         <p>Price per Coin: Nu {{ price_per_coin }}</p>
         
  
-        <a href="/home" class="btn">Back to Home</a>
+        <button class="btn" onclick="goBack()">Back to Home</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
     </section>
 
 
