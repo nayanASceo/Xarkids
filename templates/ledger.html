@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xarkids Ledger</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #ff4444;
+        }
+        #searchBar {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ff4444;
+            outline: none;
+        }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ff4444;
+            text-align: left;
+        }
+        th {
+            background-color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Xarkids Ledger</h1>
+    <input type="text" id="searchBar" placeholder="Search transactions..." onkeyup="searchTable()">
+    
+    <table id="ledgerTable">
+        <thead>
+            <tr id="headerRow"></tr>
+        </thead>
+        <tbody id="dataRows"></tbody>
+    </table>
+
+    <script>
+        const sheetID = "1g7iBhkejLmO6IToOUfIBe22eMrqEhHn4yTdu5eAihck";  // Replace with your Google Sheet ID
+        const apiURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+        async function fetchData() {
+            try {
+                const response = await fetch(apiURL);
+                const text = await response.text();
+                const json = JSON.parse(text.substring(47, text.length - 2)); // Clean Google Sheets response
+
+                const rows = json.table.rows;
+                const headers = json.table.cols.map(col => col.label).filter(label => label); // Get headers
+
+                const tableHead = document.getElementById("headerRow");
+                const tableBody = document.getElementById("dataRows");
+
+                // Insert Headers
+                headers.forEach(header => {
+                    let th = document.createElement("th");
+                    th.textContent = header;
+                    tableHead.appendChild(th);
+                });
+
+                // Insert Rows (Reverse Order for Newest First)
+                rows.reverse().forEach(row => {
+                    let tr = document.createElement("tr");
+                    row.c.forEach(cell => {
+                        let td = document.createElement("td");
+                        td.textContent = cell ? cell.v : ""; // Handle empty cells
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        function searchTable() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let rows = document.querySelectorAll("#dataRows tr");
+
+            rows.forEach(row => {
+                let text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+
+        fetchData();
+    </script>
+
+</body>
+</html>
