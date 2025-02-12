@@ -14,7 +14,7 @@
         }/* Body Styling */
     body {
         font-family: Fantasy, sans-serif;
-        background-image: url('/static/images/hero.png');
+        background-image: url('{{ url_for('static', filename='hero.jpg') }}'); 
         background-size: cover;
         background-position: center;
         color: #fff;
