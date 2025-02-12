@@ -119,6 +119,12 @@
             margin-top: 50px;
         }
     </style>
+    <script>
+    function logout() {
+        fetch('/logout', { method: 'GET' })  // Call the Flask logout route
+            .then(() => window.location.href = '/index');  // Redirect after logout
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -129,12 +135,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
 
-<script>
-    function logout() {
-        fetch('/logout', { method: 'GET' })  // Call the Flask logout route
-            .then(() => window.location.href = '/index');  // Redirect after logout
-    }
-</script>
+
             </ul>
         </nav>
     </header>
@@ -155,6 +156,7 @@
     <img src="{{ url_for('static', filename='price.jpg') }}" alt="price">
     <span>Price Information</span>
 </a>
+    
     </div>
 </body>
 </html>
