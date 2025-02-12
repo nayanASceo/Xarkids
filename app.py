@@ -1,6 +1,6 @@
 import json
 import os
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, url_for
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -101,6 +101,11 @@ def home():
 
     # If the account number is not found, return an error message
     return "Account not found"
+    
+@app.route('/logout')
+def logout():
+    session.clear()  # Clears all session data (logs out user)
+    return redirect(url_for('index.html'))  # Redirects to login page
 
 @app.route('/transfer', methods=['GET', 'POST'])
 def transfer():
