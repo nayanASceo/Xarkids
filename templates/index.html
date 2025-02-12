@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,142 +11,229 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        }/* Body Styling */
+    body {
+        font-family: Fantasy, sans-serif;
+        background-image: url('/static/images/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        overflow-x: hidden;
+    }
 
-        /* Body Styling */
-        body {
-            font-family: Fantasy, sans-serif;
-            background-image: url('{{ url_for('static', filename='hero.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            height: 100vh;
-        }
+    /* Header */
+    header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
 
-        /* Header */
-        header {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent header */
-        }
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+    .logo-container img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 
-        .logo-container img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%; /* Circular logo */
-            object-fit: cover;
-        }
+    .logo-text {
+        font-size: 54px;
+        margin-left: 15px;
+    }
 
-        .logo-text {
-            font-size: 54px;
-            margin-left: 15px;
-        }
+    /* Fancy Hamburger Menu */
+    .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+        margin-right: 20px;
+        transition: transform 0.3s;
+    }
 
-        /* Hero Section */
-        .hero-section {
-            text-align: center;
-            padding: 100px 20px;
-            background-color: rgba(0, 0, 0, 0.1); /* Transparent dark overlay */
-        }
+    .menu-icon:hover {
+        transform: scale(1.1);
+    }
 
-        .hero-section h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -50%;
+        width: 50%;
+        height: 100%;
+        background: rgba(20, 20, 20, 0.95); /* Dark stylish theme */
+        display: flex;
+        flex-direction: column;
+        padding-top: 40px;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+    }
 
-        .hero-section p {
-            font-size: 20px;
-            margin-bottom: 40px;
-        }
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+        transition: 0.3s;
+    }
 
-        /* Buttons */
-        .btn {
-            background-color: #e74c3c;
-            color: #fff;
-            border: none;
-            padding: 10px 25px;
-            font-size: 18px;
-            border-radius: 35px;
-            cursor: pointer;
-            transition: background-color 2s, transform 0.2s, box-shadow 0.3s;
-        }
+    .close-menu:hover {
+        color: #e74c3c;
+    }
 
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-        }
+    /* Menu Buttons */
+    .nav-menu a {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 15px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #e74c3c;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s, transform 0.2s;
+    }
 
-        /* Image Gallery */
-        .image-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px;
-        }
+    .nav-menu a:hover {
+        background: #e74c3c;
+        transform: scale(1.05);
+    }
 
-        .image-gallery img {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px; /* Rounded corners */
-            object-fit: cover;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    /* Hero Section */
+    .hero-section {
+        text-align: center;
+        padding: 100px 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 
-        .image-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-        }
+    .hero-section h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Darker footer background */
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-        }
+    .hero-section p {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
 
-        footer p {
-            color: #bbb;
-        }
+    /* Buttons */
+    .btn {
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        font-size: 18px;
+        border-radius: 35px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
 
-    </style>
+    .btn:hover {
+        background-color: #c0392b;
+        transform: scale(1.05);
+    }
+
+    /* About Section */
+    .about-section, .team-section, .blog-section {
+        padding: 50px 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        margin: 20px;
+        border-radius: 15px;
+    }
+
+    .about-section h2, .team-section h2, .blog-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .about-section p, .team-section p, .blog-section p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #bbb;
+    }
+</style>
+
 </head>
-<body>
+<body><!-- Header Section with Logo -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Your Crypto Platform Logo">
+        <h1 class="logo-text">Xarkids</h1>
+    </div>
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+</header>
 
-    <!-- Header Section with Logo -->
-    <header>
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Crypto Platform Logo">
-            <h1 class="logo-text">Xarkids</h1>
-        </div>
-        <nav>
-            <a href="/login" class="btn">Learn More</a>
-        </nav>
-    </header>
+<!-- Fancy Sliding Menu -->
+<div class="nav-menu" id="navMenu">
+    <div class="close-menu" onclick="closeMenu()">✖</div>
+    <a href="#about">About</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Log In</a>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <h1>Welcome to Bhutan's Digital Revolution</h1>
-        <p>Join us in transforming Bhutan's economy through cryptocurrency. Explore XARCOIN today!</p>
-        <a href="/login" class="btn">Get Started</a>
-    </section>
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1>Welcome to Bhutan's Digital Revolution</h1>
+    <p>Join us in transforming Bhutan's economy through cryptocurrency. Explore XARCOIN today!</p>
+    <a href="/login" class="btn">Get Started</a>
+</section>
 
-    <!-- Image Gallery -->
-    <section class="image-gallery">
-        <img src="{{ url_for('static', filename='1.jpg') }}" alt="Logo">
-        <img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo">
-        <img src="{{ url_for('static', filename='3.jpg') }}" alt="Logo">
-    </section>
+<!-- About the App Section -->
+<section class="about-section" id="about">
+    <h2>About Xarkids</h2>
+    <p>Xarkids is the first cryptocurrency platform in Bhutan, designed to help users invest, trade, and grow their digital assets securely.</p>
+</section>
+
+<!-- About the Team Section -->
+<section class="team-section">
+    <h2>Meet the Team</h2>
+    <p>Founded by a passionate team of young entrepreneurs, Xarkids is committed to making cryptocurrency accessible to every Bhutanese citizen.</p>
+</section>
+
+<!-- Blog Section -->
+<section class="blog-section">
+    <h2>Latest Blog Posts</h2>
+    <article>
+        <h3>The Journey of XARCOIN</h3>
+        <p>XARCOIN started as a vision to bring financial independence to Bhutan. Learn how it grew into a powerful digital asset.</p>
+    </article>
+    <article>
+        <h3>Why Cryptocurrency is the Future</h3>
+        <p>Explore how blockchain technology is revolutionizing financial systems worldwide and why Bhutan is joining the movement.</p>
+    </article>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Xarkids. All rights reserved.</p>
+</footer>
+
+<script>
+    function openMenu() {
+        document.getElementById("navMenu").style.right = "0";
+    }
+
+    function closeMenu() {
+        document.getElementById("navMenu").style.right = "-50%";
+    }
+</script>
 
 </body>
-</html>
