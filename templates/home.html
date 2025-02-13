@@ -90,7 +90,7 @@
             font-size: 20px;
             border-radius: 15px;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 2s ease, background-color 1.9s ease;
             display: block;
             margin: 20px auto;
             text-align: center;
@@ -119,12 +119,7 @@
             margin-top: 50px;
         }
     </style>
-    <script>
-    function logout() {
-        fetch('/logout', { method: 'GET' })  // Call the Flask logout route
-            .then(() => window.location.href = '/index');  // Redirect after logout
-    }
-    </script>
+    
 </head>
 <body>
     <header>
@@ -162,5 +157,11 @@
     <span>Blockchain Access</span>
 </a>
     </div>
+<script>
+    function logout() {
+        fetch('/logout', { method: 'GET' })  // Call the Flask logout route
+            .then(() => window.location.href = '/index');  // Redirect after logout
+    }
+</script>
 </body>
 </html>
